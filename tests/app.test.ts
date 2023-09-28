@@ -53,9 +53,6 @@ describe("GET /fruits", () => {
     };
     const { status, body } = await server.get('/fruits');
     expect(status).toBe(httpStatus.OK);
-    expect(body).toEqual([
-      {...fruits[0], id: 1},
-      {...fruits[1], id: 2}
-    ]);
+    expect(body).toEqual(fruits.map((f, i) => ({ ...f ,id: i+1 })));
   });
 });
